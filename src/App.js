@@ -1,24 +1,21 @@
-import SpotifyPlayer from "react-spotify-player";
+import { Routes, Route } from "react-router-dom";
+
+import MainPage from "./Pages/MainPage";
+import About from "./Pages/About";
+import NavBar from "./Components/NavBar/NavBar";
 
 import "./App.css";
 
-function App() {
-  const size = {
-    width: "20%",
-    height: 500,
-  };
-  const view = "list"; // or 'coverart'
-  const theme = "black"; // or 'white'
+const App = () => {
   return (
-    <div className="App">
-      <SpotifyPlayer
-        uri="spotify:album:4ssvXCfePUn0EwwcUy10Pi"
-        size={size}
-        view={view}
-        theme={theme}
-      />
-    </div>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="about" element={<About />}></Route>
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
