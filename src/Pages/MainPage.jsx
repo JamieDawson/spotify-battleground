@@ -1,33 +1,64 @@
 import React from "react";
-import SpotifyPlayer from "react-spotify-player";
+import BandcampPlayer from "react-bandcamp";
+import "../Pages/MainPage.styles.css";
 
 const MainPage = () => {
-  const size = {
-    width: "0%",
-    height: 400,
-  };
-  const view = "list"; // or 'coverart'
-  const theme = "black"; // or 'white'
   return (
     <>
-      <SpotifyPlayer
-        uri="spotify:album:1TIUsv8qmYLpBEhvmBmyBk"
-        size={size}
-        view={view}
-        theme={theme}
-      />
-      {/* <SpotifyPlayer
-        uri="spotify:album:1TIUsv8qmYLpBEhvmBmyBk"
-        size={size}
-        view={view}
-        theme={theme}
-      />
-      <SpotifyPlayer
-        uri="spotify:album:1TIUsv8qmYLpBEhvmBmyBk"
-        size={size}
-        view={view}
-        theme={theme}
-      /> */}
+      <div class="container">
+        <BandcampPlayer
+          BandcampPlayer
+          album="3114440086"
+          bgcol="blue"
+          linkcol="blue"
+          size="medium"
+          width="430px"
+        />
+
+        <BandcampPlayer
+          BandcampPlayer
+          album="3114440086"
+          bgcol="blue"
+          linkcol="blue"
+          size="medium"
+          width="430px"
+        />
+        <BandcampPlayer
+          BandcampPlayer
+          album="3114440086"
+          bgcol="blue"
+          linkcol="blue"
+          size="medium"
+          width="430px"
+        />
+      </div>
+      <div class="container">
+        <BandcampPlayer
+          BandcampPlayer
+          album="3114440086"
+          bgcol="blue"
+          linkcol="blue"
+          size="medium"
+          width="430px"
+        />
+
+        <BandcampPlayer
+          BandcampPlayer
+          album="3114440086"
+          bgcol="blue"
+          linkcol="blue"
+          size="medium"
+          width="430px"
+        />
+        <BandcampPlayer
+          BandcampPlayer
+          album="3114440086"
+          bgcol="blue"
+          linkcol="blue"
+          size="medium"
+          width="430px"
+        />
+      </div>
     </>
   );
 };
