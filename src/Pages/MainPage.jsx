@@ -3,10 +3,12 @@ import BandcampPlayer from "react-bandcamp";
 import "../Pages/MainPage.styles.css";
 
 const MainPage = () => {
-  const [albums, album1Update] = useState({
-    ablum1: "3114440086",
-    album2: "1387779480",
-  });
+  // let [albums, albumUpdate] = useState({
+  //   album1: "3114440086",
+  //   album2: "1387779480",
+  // });
+
+  let [albums, albumUpdate] = useState([3114440086, 1387779480]);
 
   const [name, setName] = useState("");
 
@@ -18,29 +20,47 @@ const MainPage = () => {
 
     // Or you can work with it as a plain object:
     const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
+
+    passedSubmission(newAlbumID, formJson);
+  };
+
+  const passedSubmission = (newAlbumID, formJson) => {
     console.log(newAlbumID);
+    let getAlbumSpace = Number(formJson.myRadio);
+    console.log(getAlbumSpace);
+    console.log(typeof getAlbumSpace);
+
+    switch (getAlbumSpace) {
+      case 0:
+        console.log("found zero");
+        albumUpdate([(albums[0] = newAlbumID), (albums[1] = albums[1])]);
+        break;
+      case 1:
+        console.log("found one");
+        albumUpdate([(albums[0] = albums[0]), (albums[1] = newAlbumID)]);
+        break;
+    }
+
+    //albumUpdate([test: newAlbumID]);
+  };
+
+  const consoleLogAlbum = () => {
+    console.log(albums);
   };
 
   return (
     <>
+      <button onClick={consoleLogAlbum}>testAlbums</button>
       <form onSubmit={handleSubmit}>
         <input onChange={(e) => setName(e.target.value)} value={name}></input>
         <label>
-          <input type="radio" name="myRadio" value="option1" /> Option 1
+          <input type="radio" name="myRadio" value="0" /> Album 1
         </label>
         <label>
-          <input
-            type="radio"
-            name="myRadio"
-            value="option2"
-            defaultChecked={true}
-          />{" "}
-          Option 2
+          <input type="radio" name="myRadio" value="1" />
+          Album 2
         </label>
-        <label>
-          <input type="radio" name="myRadio" value="option3" /> Option 3
-        </label>
+
         <br />
         <button type="submit">Click to submit</button>
       </form>
@@ -48,7 +68,7 @@ const MainPage = () => {
       <div class="container">
         <BandcampPlayer
           BandcampPlayer
-          album={albums.ablum1}
+          album={albums[0]}
           bgcol="blue"
           linkcol="blue"
           size="medium"
@@ -57,7 +77,7 @@ const MainPage = () => {
 
         <BandcampPlayer
           BandcampPlayer
-          album={albums.album2}
+          album={albums[1]}
           bgcol="blue"
           linkcol="blue"
           size="medium"
@@ -72,7 +92,7 @@ const MainPage = () => {
           width="430px"
         />
       </div>
-      <div class="container">
+      {/* <div class="container">
         <BandcampPlayer
           BandcampPlayer
           album="3114440086"
@@ -98,7 +118,7 @@ const MainPage = () => {
           size="medium"
           width="430px"
         />
-      </div>
+      </div> */}
     </>
   );
 };
@@ -112,6 +132,7 @@ https://www.npmjs.com/package/react-bandcamp
 */
 
 /*
+I think this shouldn't be an object, but array of arrays and then select items in it?
 Create input that sends album number to function with button click
-
+https://www.quora.com/How-can-you-change-only-one-property-of-an-object-using-the-USestate-hook-JavaScript-React-React-hooks-development
 */
