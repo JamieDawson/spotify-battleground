@@ -3,12 +3,7 @@ import BandcampPlayer from "react-bandcamp";
 import "../Pages/MainPage.styles.css";
 
 const MainPage = () => {
-  // let [albums, albumUpdate] = useState({
-  //   album1: "3114440086",
-  //   album2: "1387779480",
-  // });
-
-  let [albums, albumUpdate] = useState([3114440086, 1387779480]);
+  let [albums, albumUpdate] = useState([3114440086, 1387779480, 3769692977]);
 
   const [name, setName] = useState("");
 
@@ -25,23 +20,34 @@ const MainPage = () => {
   };
 
   const passedSubmission = (newAlbumID, formJson) => {
-    console.log(newAlbumID);
     let getAlbumSpace = Number(formJson.myRadio);
-    console.log(getAlbumSpace);
-    console.log(typeof getAlbumSpace);
 
     switch (getAlbumSpace) {
       case 0:
         console.log("found zero");
-        albumUpdate([(albums[0] = newAlbumID), (albums[1] = albums[1])]);
+        albumUpdate([
+          (albums[0] = newAlbumID),
+          (albums[1] = albums[1]),
+          (albums[2] = albums[2]),
+        ]);
         break;
       case 1:
         console.log("found one");
-        albumUpdate([(albums[0] = albums[0]), (albums[1] = newAlbumID)]);
+        albumUpdate([
+          (albums[0] = albums[0]),
+          (albums[1] = newAlbumID),
+          (albums[2] = albums[2]),
+        ]);
+        break;
+      case 2:
+        console.log("found one");
+        albumUpdate([
+          (albums[0] = albums[0]),
+          (albums[1] = albums[1]),
+          (albums[2] = newAlbumID),
+        ]);
         break;
     }
-
-    //albumUpdate([test: newAlbumID]);
   };
 
   const consoleLogAlbum = () => {
@@ -59,6 +65,10 @@ const MainPage = () => {
         <label>
           <input type="radio" name="myRadio" value="1" />
           Album 2
+        </label>
+        <label>
+          <input type="radio" name="myRadio" value="2" />
+          Album 3
         </label>
 
         <br />
@@ -85,7 +95,7 @@ const MainPage = () => {
         />
         <BandcampPlayer
           BandcampPlayer
-          album="3114440086"
+          album={albums[2]}
           bgcol="blue"
           linkcol="blue"
           size="medium"
